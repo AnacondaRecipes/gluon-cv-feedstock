@@ -44,7 +44,7 @@ test:
     - gluoncv
   commands:
     - cd test && pytest
-    #- pip check
+    - pip check
 
 about:
   home: https://github.com/dmlc/gluon-cv
