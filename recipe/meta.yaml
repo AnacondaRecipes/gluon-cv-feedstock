@@ -35,17 +35,26 @@ requirements:
     - pandas
     - pyyaml
     - autocfg
+#    - autogluon-core
+#    - opencv-python
+#    - decord
+#    - tensorboardx
 
 test:
   requires:
     - pip
     - mxnet
     - pytest
+    - nose
   imports:
     - gluoncv
   commands:
-    - cd test && pytest
-    - pip check
+    - pytest --pyargs tests.unittests
+#    - pytest --pyargs tests.auto
+#    - pytest --pyargs tests.model_zoo
+#    - pytest --pyargs tests.model_zoo_torch
+#    - pytest --pyargs tests.onnx
+#    - pip check
 
 about:
   home: https://github.com/dmlc/gluon-cv
