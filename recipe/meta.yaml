@@ -11,6 +11,7 @@ source:
   sha256: 2a76fd362e614122b0ff7e6b92844c465947f8cbbb6fa967fdc59dde3e7c7897
 
 build:
+  skip: True     # [py<36]
   number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps
@@ -34,17 +35,26 @@ requirements:
     - pandas
     - pyyaml
     - autocfg
+#    - autogluon-core
+#    - opencv-python
+#    - decord
+#    - tensorboardx
 
 test:
   requires:
     - pip
     - mxnet
     - pytest
+    - nose
   imports:
     - gluoncv
   commands:
-    - cd test && pytest
-    #- pip check
+    - pytest --pyargs tests.unittests
+#    - pytest --pyargs tests.auto
+#    - pytest --pyargs tests.model_zoo
+#    - pytest --pyargs tests.model_zoo_torch
+#    - pytest --pyargs tests.onnx
+#    - pip check
 
 about:
   home: https://github.com/dmlc/gluon-cv
